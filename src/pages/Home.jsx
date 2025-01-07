@@ -2,14 +2,18 @@ import React from "react";
 import FeaturedMovies from "../components/FeaturedMovies";
 import MovieOfTheDay from "../components/Week";
 import TrendingMovies from "../components/Trending";
+import AboutUs from "../components/AboutUs";
+import ContactUs from "../components/ContactUs";
 
 const Home = () => {
   return (
-    <div className="pt-10">
+    <>
       <FeaturedMovies></FeaturedMovies>
       <TrendingMovies></TrendingMovies>
       <MovieOfTheDay></MovieOfTheDay>
-    </div>
+      <AboutUs></AboutUs>
+      <ContactUs></ContactUs>
+    </>
   );
 };
 

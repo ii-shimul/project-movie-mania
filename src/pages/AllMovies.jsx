@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Movie from "../components/Movie";
-import { AuthContext } from "../provider/AuthProvider";
 
 const AllMovies = () => {
   const [movies, setMovies] = useState([]);
   const [perMovies, setPerMovies] = useState([]);
   const [searchVal, setSearchVal] = useState("");
+  const [sort, setSort] = useState("");
   useEffect(() => {
     fetch("https://movie-mania-server-drab.vercel.app/movies")
       .then((res) => res.json())
@@ -27,6 +27,17 @@ const AllMovies = () => {
     });
     setMovies(filterBySearch);
   }, [searchVal]);
+
+  useEffect(() => {
+    if (sort === "Ascending") {
+      const sortedMovies = movies.sort((a, b) => a.rating - b.rating);
+      setMovies(sortedMovies);
+    } else {
+      const sortedMovies = movies.sort((a, b) => b.rating - a.rating);
+      setMovies(sortedMovies);
+    }
+  }, [sort]);
+
   if (!movies.length) {
     return (
       <div className="w-full min-h-80 flex justify-center items-center">
@@ -35,12 +46,24 @@ const AllMovies = () => {
     );
   }
   return (
-    <div className="w-[90%] md:w-[80%] lg:[w-70%] max-w-6xl mx-auto my-5">
-      <div className="flex justify-between items-center">
-        <h1 className="text-4xl my-7 text-center font-semibold max-sm:text-2xl">
-          Explore the realm of great movies.
-        </h1>
-        <label className="input input-bordered flex items-center gap-2">
+    <div className="w-[90%] max-w-7xl mx-auto my-5">
+      <h1 className="text-4xl my-7 text-center font-semibold max-sm:text-2xl">
+        Explore the realm of great movies.
+      </h1>
+      <div className="flex justify-between items-center mb-5">
+        <div className="">
+          <select
+            onChange={(e) => setSort(e.target.value)}
+            className="select select-bordered  max-w-xs"
+          >
+            <option disabled selected>
+              Sort by rating
+            </option>
+            <option>Ascending</option>
+            <option>Descending</option>
+          </select>
+        </div>
+        <label className="input input-bordered flex items-center gap-2 max-sm:w-36">
           <input
             onChange={(e) => setSearchVal(e.target.value)}
             type="text"

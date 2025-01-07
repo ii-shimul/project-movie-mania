@@ -1,9 +1,13 @@
 import "animate.css";
 import { IoPlayCircleOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="carousel w-full max-h-screen max-sm:min-h-[290px] shadow-2xl">
+    <div
+      style={{ maxHeight: "calc(100vh - 100px)" }}
+      className="carousel w-full max-sm:min-h-[290px] shadow-2xl"
+    >
       <div id="slide1" className="carousel-item relative w-full">
         <img
           src="https://images.bauerhosting.com/legacy/media/6217/9535/9649/1207/f543/24bb/vote-hero.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=1440&q=80"
@@ -22,7 +26,7 @@ const Banner = () => {
               <br />
               <div className="bg-white bg-opacity-70 text-black btn w-fit mt-3 flex items-center gap-2 text-lg opacity-50 max-sm:text-xs">
                 <IoPlayCircleOutline />
-                Watch Now
+                <Link to={"/movies/6752e579b6ea44533532984f"}>Watch Now</Link>
               </div>
             </p>
           </div>
@@ -54,7 +58,7 @@ const Banner = () => {
               <br />
               <div className="bg-white bg-opacity-70 text-black btn w-fit mt-3 flex items-center gap-2 text-lg opacity-50 max-sm:text-xs">
                 <IoPlayCircleOutline />
-                Watch Now
+                <Link to={"/movies/6752e819b1f503820f16d3fb"}>Watch Now</Link>
               </div>
             </p>
           </div>
@@ -86,7 +90,7 @@ const Banner = () => {
               <br />
               <div className="bg-white bg-opacity-70 text-black btn w-fit mt-3 flex items-center gap-2 text-lg opacity-50 max-sm:text-xs">
                 <IoPlayCircleOutline />
-                Watch Now
+                <Link to={"/movies/6755904e7ebdb41c83fd76e6"}>Watch Now</Link>
               </div>
             </p>
           </div>

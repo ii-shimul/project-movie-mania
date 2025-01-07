@@ -21,8 +21,8 @@ const NavBar = () => {
     localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme");
     document.querySelector("html").setAttribute("data-theme", localTheme);
+    document.querySelector("html").setAttribute("class", localTheme);
   }, [theme]);
-
   const { logOut, user } = useContext(AuthContext);
   const navLinks = (
     <>
@@ -32,18 +32,32 @@ const NavBar = () => {
       <li>
         <NavLink to={"/all-movies"}>All Movies</NavLink>
       </li>
-      <li>
-        <NavLink to={"/add-movie"}>Add Movie</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/my-favorites"}>My Favorites</NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to={"/add-movie"}>Add Movie</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/my-favorites"}>My Favorites</NavLink>
+          </li>
+        </>
+      )}
+      {location.pathname === "/" && (
+        <>
+          <li>
+            <a href="#about">About Us</a>
+          </li>
+          <li>
+            <a href="#contact">Contact Us</a>
+          </li>
+        </>
+      )}
       <li>
         <NavLink to={"/reviews"}>Reviews</NavLink>
       </li>
     </>
   );
-  if (location.pathname === '/') {
+  if (location.pathname === "/") {
     return (
       <div className="navbar bg-black bg-opacity-20 z-40">
         <div className="navbar-start">
@@ -73,8 +87,7 @@ const NavBar = () => {
           </div>
           <Link to={"/"} className="btn btn-ghost text-xl max-sm:btn-sm">
             {" "}
-            <img className="h-7" src={"/logo-inverted.png"} alt="" />{" "}
-            MovieMania
+            <img className="h-7" src={"/logo-inverted.png"} alt="" /> MovieMania
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -162,7 +175,7 @@ const NavBar = () => {
     );
   }
   return (
-    <div className="navbar bg-black bg-opacity-5 z-40">
+    <div className="navbar bg-blue-200 z-40">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

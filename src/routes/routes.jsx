@@ -10,11 +10,13 @@ import PrivateRoute from "./PrivateRoute";
 import MovieDetails from "../pages/MovieDetails";
 import UpdateMovie from "../pages/UpdateMovie";
 import UserReviews from "../components/Reviews";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -30,11 +32,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/all-movies",
-        element: (
-          <PrivateRoute>
-            <AllMovies></AllMovies>
-          </PrivateRoute>
-        ),
+        element: <AllMovies></AllMovies>,
       },
       {
         path: "/add-movie",
@@ -62,7 +60,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/update/:id",
-        element: <UpdateMovie></UpdateMovie>,
+        element: (
+          <PrivateRoute>
+            <UpdateMovie></UpdateMovie>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/reviews",

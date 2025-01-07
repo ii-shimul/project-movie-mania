@@ -36,7 +36,7 @@ const FavMovie = ({ movie, user, favorites, setFavorites }) => {
   return (
     <div
       data-aos="fade-up"
-      className="border border-gray-300 rounded-lg shadow-lg overflow-hidden bg-white transform transition hover:scale-[1.02] hover:shadow-2xl"
+      className="border border-gray-300 rounded-lg shadow-lg overflow-hidden transform transition hover:scale-[1.02] hover:shadow-2xl"
     >
       <ToastContainer></ToastContainer>
       <img
